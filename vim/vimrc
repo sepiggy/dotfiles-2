@@ -204,11 +204,16 @@ set smartindent
 
 " --- 5.2 代码折叠 --- {{{
 " ----- 基于缩进或语法进行代码折叠 -----
-"set foldmethod=indent
-set foldmethod=syntax
+set foldmethod=indent
 
-" ----- 启动 vim 时关闭折叠代码 -----
-set nofoldenable
+" ----- 保存文件的折叠状态 -----
+au BufWinLeave * silent mkview
+
+" ----- 恢复文件的折叠状态 -----
+au BufRead * silent loadview
+
+" ----- 用空格来切换折叠状态 -----
+nnoremap <space> za
 " --- }}}
 
 " --- 5.3 语法高亮 --- {{{
@@ -222,7 +227,6 @@ syntax on
 
 " 6 Plugin {{{
 call plug#begin('~/.vim/plugged')
-
 " --- 6.1 配色主题相关 --- {{{
 Plug 'flazz/vim-colorschemes'
 
@@ -268,15 +272,27 @@ let g:SignatureMap = {
 
 " --- 6.2 文件浏览搜索相关 --- {{{
 Plug 'scrooloose/nerdtree'
-let g:NERDTreeWinPos='right' " 设置显示位置
-let NERDTreeShowLineNumbers=1 " 显示行号
+" 当不带参数打开Vim时自动加载项目树
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" 当所有文件关闭时关闭项目树窗格
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" 忽略以下文件的显示
+let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules', '.idea', '*.pyc']
+" 不显示项目树上额外的信息，例如帮助、提示什么的
+let NERDTreeMinimalUI=1
+" 显示位置
+let g:NERDTreeWinPos='right'
+" 显示行号
+let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
-let NERDTreeShowHidden=1 " 显示隐藏文件
-let NERDTreeWinSize=31 " 设置宽度
-let g:nerdtree_tabs_open_on_console_startup=1 " 在终端启动vim时，共享NERDTree
-let NERDTreeIgnore=['.idea', '.vscode', 'node_modules', '*.pyc'] " 忽略以下文件的显示
+" 显示隐藏文件
+let NERDTreeShowHidden=1
+" 设置宽度
+let NERDTreeWinSize=31
+" 在终端启动vim时，共享NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeShowBookmarks=1 " 显示书签列表
-
 " if exists('g:NERDTreeWinPos') " 设置 nerdtree 初始目录
 "     if g:isWIN
 "         autocmd vimenter * NERDTree D:\Code
@@ -287,6 +303,7 @@ let NERDTreeShowBookmarks=1 " 显示书签列表
 
 Plug 'jistr/vim-nerdtree-tabs'
 
+" 这个插件可以显示文件的Git增删状态
 Plug 'Xuyuanp/nerdtree-git-plugin'
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -571,6 +588,9 @@ let maplocalleader="\\"
 nmap <leader>g :Goyo<cr>
 xmap <leader>g :Goyo<cr>
 
+" ----- 打开/关闭 NERDTree -----
+map <silent> <leader>e :NERDTreeToggle<cr>
+
 " ----- 与上一行互换 -----
 nnoremap <leader>k kddpk$
 
@@ -597,7 +617,6 @@ nnoremap <leader>Q :qa!<cr>
 " ----- 重读我的 vimrc 文件 -----
 nnoremap <leader>s :source $MYVIMRC<cr>
 
-map <leader>t <plug>NERDTreeTabsToggle<cr>
 " ----- 在一个新的标签页中编辑我的 vimrc 文件 -----
 nnoremap <leader>v :tabnew $MYVIMRC<cr>
 
@@ -630,9 +649,6 @@ vmap <leader>p "+p
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <leader>y "+y
-
-" ----- 双击 leader 键进入行视图可选模式 -----
-nnoremap <leader><leader> V
 
 " ----- 将当前光标所在的单词转化为大写字母 -----
 nnoremap <leader><leader>c viwgUe

@@ -88,11 +88,11 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 " }}}
 
 " --- 2.8 剪贴板相关 --- {{{
-" ----- Vim 的默认寄存器和系统剪贴板共享 -----
+" ----- 2.8.1 Vim 的默认寄存器和系统剪贴板共享 -----
 set clipboard+=unnamed
 
-" ----- 切换拷贝模式防止自动缩进和补全 -----
-" set pastetoggle=<leader>p
+" ----- 2.8.2 切换拷贝模式防止自动缩进和补全 -----
+set pastetoggle=<F9>
 " --- }}}
 
 " --- 2.9 设置 alt 键不映射到菜单栏 --- {{{
@@ -120,12 +120,8 @@ let $LANG='en_us.UTF-8'
 
 " 4 GUI {{{
 " --- 4.1 配色 --- {{{
-if g:isWIN
-    colorscheme predawn
-else
-    colorscheme gruvbox
-    set background=dark
-endif
+colorscheme solarized
+set background=dark
 " --- }}}
 
 " --- 4.2 菜单 --- {{{
@@ -237,8 +233,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'junegunn/goyo.vim'
 " autocmd! BufNewFile,BufRead * :Limelight 0.8 " 启动 vim 就进入 goyo 模式
-nmap <leader>g :Goyo<cr>
-xmap <leader>g :Goyo<cr>
 
 Plug 'junegunn/limelight.vim'
 " autocmd! User GoyoEnter Limelight
@@ -321,25 +315,7 @@ Plug 'bsdelf/bufferhint'
 nnoremap - :call bufferhint#Popup()<cr>
 nnoremap \ :call bufferhint#LoadPrevious()<cr>
 
-Plug 'ctrlpvim/ctrlp.vim'
-"<leader>p搜索文件
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-"<leader>f搜索MRU
-map <leader>f :CtrlPMRU<CR>
-"设置搜索时忽略的文件
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
-    \ }
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_match_window_bottom=1
-"修改QuickFix窗口显示的最大条目数
-let g:ctrlp_max_height=10
-let g:ctrlp_match_window_reversed=0
-"设置MRU最大条目数为500
-let g:ctrlp_mruf_max=500
-let g:ctrlp_follow_symlinks=1
+Plug 'Yggdroot/LeaderF'
 
 Plug 'haya14busa/incsearch.vim'
 map / <Plug>(incsearch-forward)
@@ -585,6 +561,7 @@ let mapleader=","
 " ----- 设置 localleader 键 -----
 let maplocalleader="\\"
 
+" ----- Goyo插件的快捷键 -----
 nmap <leader>g :Goyo<cr>
 xmap <leader>g :Goyo<cr>
 

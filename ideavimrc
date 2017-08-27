@@ -120,6 +120,7 @@ nnoremap slt :action defaultLombokToString<cr>
 nnoremap snc :action NewClass<cr>
 nnoremap snd :action NewDir<cr>
 nnoremap snf :action NewFile<cr>
+nnoremap sng :action Go.NewGoFile<cr>
 nnoremap snh :action NewHtmlFile<cr>
 nnoremap snm :action NewModule<cr>
 nnoremap snp :action NewProject<cr>
@@ -145,6 +146,7 @@ nnoremap to :action CloseAllEditorsButActive<cr>
 nnoremap tp :action PinActiveTab<cr>
 nnoremap tr :action ReopenClosedTab<cr>
 nnoremap ts :split<cr>
+nnoremap tt :action com.bobz.action.OpenTerminalHereAction<cr>
 nnoremap tv :vsplit<cr>
 nnoremap tw :action CloseEditor<cr>
 " Tabs end

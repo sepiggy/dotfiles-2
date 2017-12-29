@@ -10,166 +10,54 @@ set clipboard+=unnamed
 " vim-surround
 set surround
 
-let mapleader=','
+let mapleader=' '
 
 " Insert mode shortcut
 inoremap jk <esc>
-inoremap <C-b> <Left>
-inoremap <C-n> <Down>
-inoremap <C-p> <Up>
-inoremap <C-f> <Right>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-d> <Delete>
+
+" Breakpoint
+nnoremap ba :action ViewBreakpoints<cr>
+nnoremap bb :action ToggleLineBreakpoint<cr>
+nnoremap be :action EditBreakpoint<cr>
+
+" Bookmark
+nnoremap ma :action ShowBookmarks<cr>
+nnoremap mb :action EditBookmarksGroup<cr>
+nnoremap mm :action ToggleBookmark<cr>
+nnoremap mj :action GotoNextBookmark<cr>
+nnoremap mk :action GotoPreviousBookmark<cr>
 
 " Normal mode shortcut
 nnoremap ; :
-nnoremap bb :action ToggleBookmark<cr>
-nnoremap b[ :action GotoPreviousBookmark<cr>
-nnoremap b] :action GotoNextBookmark<cr>
+nnoremap F :action $SearchWeb<cr>
 nnoremap f :action emacsIDEAs.AceJump<cr>
 
 " Navigate begin
-nnoremap ga :action GotoAction<cr>
-nnoremap gb :action ShowBookmarks<cr>
-nnoremap gc :action GotoClass<cr>
 nnoremap gd :action GotoTypeDeclaration<cr>
-nnoremap ge :action GotoNextError<cr>
-nnoremap gf :action GotoFile<cr>
-nnoremap ghc :action CallHierarchy<cr>
-nnoremap ghm :action MethodHierarchy<cr>
-nnoremap ght :action TypeHierarchy<cr>
 nnoremap ghu :action ShowUmlDiagramPopup<cr>
 nnoremap gi :action GotoImplementation<cr>
 nnoremap gj :action QuickJavaDoc<cr>
 nnoremap gk :action RecentFiles<cr>
-nnoremap gl :action GotoLine<cr>
 nnoremap gm :action GotoSuperMethod<cr>
-nnoremap gn :action ShowNavBar<cr>
-nnoremap gof :action OpenFile<cr>
-nnoremap gob :action OpenInBrowser<cr>
-nnoremap gp :action ShowFilePath<cr>
-nnoremap gr :action GotoRelated<cr>
-nnoremap gs :action FileStructurePopup<cr>
-nnoremap gt :action GotoTest<cr>
 nnoremap gu :action ShowUsages<cr>
-nnoremap gv :action SelectIn<cr>
-nnoremap gy :action GotoSymbol<cr>
-nnoremap g; :action SearchEverywhere<cr>
 " Navigate end
 
-nnoremap H ^
-nnoremap J :action emacsIDEAs.AceJump<cr>>
 nnoremap j jzz
-nnoremap K :action emacsIDEAs.AceJump<cr>>
 nnoremap k kzz
+nnoremap H ^
+nnoremap J :action MethodDown<cr>
+nnoremap K :action MethodUp<cr>
 nnoremap L $
 
-nnoremap m; :action ToggleBookmark0<cr>
-nnoremap ma :action ToggleBookmark1<cr>
-nnoremap ms :action ToggleBookmark2<cr>
-nnoremap md :action ToggleBookmark3<cr>
-nnoremap mf :action ToggleBookmark4<cr>
-nnoremap mg :action ToggleBookmark5<cr>
-nnoremap mh :action ToggleBookmark6<cr>
-nnoremap mj :action ToggleBookmark7<cr>
-nnoremap mk :action ToggleBookmark8<cr>
-nnoremap ml :action ToggleBookmark9<cr>
-
-nnoremap `; :action GotoBookmark0<cr>
-nnoremap `a :action GotoBookmark1<cr>
-nnoremap `s :action GotoBookmark2<cr>
-nnoremap `d :action GotoBookmark3<cr>
-nnoremap `f :action GotoBookmark4<cr>
-nnoremap `g :action GotoBookmark5<cr>
-nnoremap `h :action GotoBookmark6<cr>
-nnoremap `j :action GotoBookmark7<cr>
-nnoremap `k :action GotoBookmark8<cr>
-nnoremap `l :action GotoBookmark9<cr>
-
-" Refactor Run begin
-nnoremap rb :action ToggleLineBreakpoint<cr>
-nnoremap rc :action RunConfiguration<cr>
-nnoremap rd :action DebugClass<cr>
-nnoremap ri :action StepInto<cr>
-nnoremap rm :action Move <cr>
-nnoremap rne :action RenameElement<cr>
-nnoremap rnf :action RenameFile<cr>
-nnoremap ro :action StepOver<cr>
-nnoremap rp :action Refactorings.QuickListPopupAction<cr>
-nnoremap rr :action RunClass<cr>
-nnoremap rt :action StepOut<cr>
-nnoremap rs :action ChangeSignature<cr>
-nnoremap rx :action Stop<cr>
-" Refactor Run end
-
 " Code begin
-nnoremap sc :action RecentChanges<cr>
-nnoremap sd :action ShiftDownAction<cr>
-nnoremap sf :action ReformatCode<cr>
-nnoremap sg :action Generate<cr>
 nnoremap sh :action HighlightUsagesInFile<cr>
-nnoremap sim :action ImplementMethods<cr>
-nnoremap sio :action OptimizeImports<cr>
-nnoremap sld :action defaultLombokData<cr>
-nnoremap sle :action defaultLombokEqualsAndHashcode<cr>
-nnoremap slg :action defaultLombokGetter<cr>
-nnoremap sll :action defaultLombokLogger<cr>
-nnoremap sls :action defaultLombokSetter<cr>
-nnoremap slt :action defaultLombokToString<cr>
-nnoremap snc :action NewClass<cr>
-nnoremap snd :action NewDir<cr>
-nnoremap snf :action NewFile<cr>
-nnoremap sng :action Go.NewGoFile<cr>
-nnoremap snh :action NewHtmlFile<cr>
-nnoremap snm :action NewModule<cr>
-nnoremap snp :action NewProject<cr>
-nnoremap sns :action NewScratchFile<cr>
-nnoremap snx :action NewXml<cr>
-nnoremap so :action OverrideMethods<cr>
-nnoremap sp :action ParameterInfo<cr>
-nnoremap sr :action com.andrewbrookins.idea.wrap.WrapParagraphAction<cr>
+nnoremap si :action OptimizeImports<cr>
 nnoremap ss :action EditorCompleteStatement<cr>
-nnoremap su :action ShiftUpAction<cr>
+nnoremap su :action osmedile.intellij.stringmanip.PopupChoiceAction<cr>
 nnoremap sv :action PasteMultiple<cr>
-nnoremap sw :action SurroundWith<cr>
-nnoremap s; :action ShowIntentionActions<cr>
-nnoremap s[ :action MethodUp<cr>
-nnoremap s] :action MethodDown<cr>
 " Code end
 
-" Tabs begin
-nnoremap th :action PreviousTab<cr>
-nnoremap tl :action NextTab<cr> 
-nnoremap tm :action CloseAllUnmodifiedEditors<cr>
-nnoremap to :action CloseAllEditorsButActive<cr>
-nnoremap tp :action PinActiveTab<cr>
-nnoremap tr :action ReopenClosedTab<cr>
-nnoremap ts :split<cr>
-nnoremap tt :action com.bobz.action.OpenTerminalHereAction<cr>
-nnoremap tv :vsplit<cr>
-nnoremap tw :action CloseEditor<cr>
-" Tabs end
-
 nnoremap U :action $Redo<cr>
-
-" View VCS begin
-nnoremap vb :action ActivateDebugToolWindow<cr>
-nnoremap vc :action ChangesView.Commit<cr>
-nnoremap vd :action ActivateDatabaseToolWindow<cr>
-nnoremap ve :action ActivateEventLogToolWindow<cr>
-nnoremap vf :action ActivateFindToolWindow<cr>
-nnoremap vj :action emacsIDEAs.AceJumpSelect<cr>
-nnoremap vl :action LocalHistory.ShowSelectionHistory<cr>
-nnoremap vl :action LocalHistory.ShowHistory<cr>
-nnoremap vm :action ActivateMavenProjectsToolWindow<cr>
-nnoremap vr :action ActivateRemoteHostToolWindow<cr>
-nnoremap vs :action Github.Share<cr>
-nnoremap vv :action ActivateVersionControlToolWindow<cr>
-nnoremap vw :action HideActiveWindow<cr>
-nnoremap vx :action ActivateRunToolWindow<cr>
-nnoremap v; :action ToggleDistractionFreeMode<cr>
-" View VCS end
 
 nnoremap w :action emacsIDEAs.AceJumpWord<cr>
 nnoremap Y y$
@@ -180,7 +68,6 @@ nnoremap zo :action ExpandRegion<cr>
 nnoremap zO :action ExpandAllRegions<cr>
 
 " Find begin
-nnoremap // :action Find<cr>
 nnoremap # :action FindPrevious<cr>
 nnoremap * :action FindNext<cr>
 nnoremap /p :action FindInPath<cr>
@@ -190,37 +77,22 @@ nnoremap /f :action FindUsagesInFile<cr>
 nnoremap /w :action FindWordAtCaret<cr>
 " Find end
 
-nnoremap <c-h> <c-w>h
-nnoremap <c-i> :action Forward<cr>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-nnoremap <c-o> :action Back<cr>
-nnoremap <c-w> <c-w>c
-nnoremap <c-]> :action GotoDeclaration<cr>
-
 " clear the search buffer when hitting return
-nnoremap <cr> :nohlsearch<cr>
+nnoremap <esc> :nohlsearch<cr>
 
-" Select all text
-nnoremap <leader>a ggVG
+" Keymap refers to NerdCommenter
+nnoremap <leader>c<space> :action CommentByLineComment<cr>
 
-map <leader>cc :action CommentByLineComment<cr>
+" Toggle
+nnoremap <leader>d :action ToggleDistractionFreeMode<cr>
 
 " Indent everything
 nnoremap <leader>i ggvG=
 
-" ----- 与上一行互换 -----
-nnoremap <leader>k kddpk$
-
-" ----- 与下一行互换 -----
-nnoremap <leader>j ddp$
-
-" ----- 连接两行 -----
-nnoremap <leader>J J
+nnoremap <leader>j J
 " nnoremap <leader>km :action Help.KeymapReference<cr>
 
-nnoremap <leader>si :source ~/.ideavimrc<cr>
+nnoremap <leader>s :source ~/.ideavimrc<cr>
 
 nnoremap <leader>v :action emacsIDEAs.AceJumpSelect<cr>
 
@@ -236,6 +108,10 @@ nnoremap <leader><leader>q viw<esc>a"<esc>hbi"<esc>lel
 " ----- 将当前光标所在的单词用单引号括起来 -----
 nnoremap <leader><leader>' viw<esc>a'<esc>hbi'<esc>lel
 
-" ----- 将当前光标所在的单词用圆括号括起来 -----
-nnoremap <leader><leader>j viw<esc>a)<esc>hbi(<esc>lel
-
+nnoremap <leader><leader>\ :vs<cr>
+nnoremap <leader><leader>- :sp<cr>
+nnoremap <leader><leader>h <c-w>h
+nnoremap <leader><leader>j <c-w>j
+nnoremap <leader><leader>k <c-w>k
+nnoremap <leader><leader>l <c-w>l
+nnoremap <leader><leader>w <c-w>c

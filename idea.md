@@ -1,26 +1,31 @@
-## IDEA KEYMAP REFERENCEIDEA KEYMAP REFERENCE
+## IDEA Keymap Reference
 
 ### OPTION + ?
 
-| Keycap          | Action                            |
+| Keymap          | Action                            |
 | :-------------- | :-------------------------------- |
 | OPTION + A      | Select All Occurrence             |
-| OPTION + B      | Navigate Type Declaration         |
-| OPTION + C      | Recent Changes                    |
-| OPTION + D      | Add to Favorites                  |
+| OPTION + B      | Quick Definition                  |
+| OPTION + C      | Context Info                      |
+| OPTION + D      | Quick Documentation               |
 | OPTION + E      | Recently Changed Files            |
 | OPTION + F      | Reformat Code                     |
+| OPTION + G      | Search with Google                |
 | OPTION + I      | Optimize Imports                  |
 | OPTION + J      | Next Highlighted Error            |
 | OPTION + K      | Error Description                 |
 | OPTION + L      | Auto-Indent Lines                 |
 | OPTION + N      | Add Selection for Next Occurrence |
+| OPTION + P      | Parameter Info                    |
 | OPTION + S      | AceJumpSelect                     |
+| OPTION + T      | Expression Type                   |
 | OPTION + U      | Toggle Case                       |
+| OPTION + V      | Recently Changed Files            |
 | OPTION + X      | Find Action ...                   |
 | OPTION + [0-9]  | Go To Bookmark [0-9]              |
 | OPTION + DELETE | Unselect Occurrence               |
 | OPTION + RETURN | Show Intention Actions            |
+| OPTION + -      | Search in Dash                    |
 | OPTION + /      | Comment With Block Comment        |
 | OPTION + [      | Last Edit Location                |
 | OPTION + ]      | Next Edit Location                |
@@ -29,6 +34,7 @@
 
 | Keymap     | Action                                                                    |
 | :--------- | :------------------------------------------------------------------------ |
+| ^A         | Add to Favorites                                                          |
 | ^B, B      | Debug                                                                     |
 | ^B, ^B     | Debug ...                                                                 |
 | ^B, C      | Debug Context Configuration                                               |
@@ -72,22 +78,17 @@
 | ^N         | Cyclic Expand Word Completion                                             |
 | ^O         | Override Methods ...                                                      |
 | ^P         | Basic Completion                                                          |
-| ^Q         | Quick Documentation                                                       |
 | ^R, C      | Run Context Configuration                                                 |
 | ^R, L      | Run to Cursor                                                             |
 | ^R, R      | Run                                                                       |
 | ^R, ^R     | Run ...                                                                   |
 | ^R, S      | Stop                                                                      |
-| ^S, C      | Context Info                                                              |
-| ^S, D      | Quick Definition                                                          |
 | ^S, ^D     | Delegate Methods ...                                                      |
 | ^S, E      | Error Description                                                         |
 | ^S, F      | Show Reformat File Dialog                                                 |
 | ^S, G      | Share Project on GitHub                                                   |
-| ^S, I      | Optimize Imports                                                          |
 | ^S, L      | Auto-Indent Lines                                                         |
 | ^S, S      | Popup String Manipulation ...                                             |
-| ^S, T      | Expression Type                                                           |
 | ^S, V      | Local History                                                             |
 | ^S, W      | Surround With …                                                           |
 | ^S, H      | Move Caret to Previous Word with Selection                                |
@@ -137,8 +138,6 @@
 | ^Y         | Navigate Symbol ...                                                       |
 | ^Z         | Navigate String ...                                                       |
 | ^Delete    | Hungry Backspace                                                          |
-| ^:         | Quick Definition                                                          |
-| ^'         | Quick Documentation                                                       |
 | ^[, C      | Previous Change                                                           |
 | ^], C      | Next Change                                                               |
 | ^[, D      | Previous Difference                                                       |

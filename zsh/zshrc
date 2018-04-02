@@ -1,4 +1,4 @@
-# If you come from bash you might have to change your $PATH.
+# If you come from bash you might have to change your $PATH.,e
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -7,7 +7,15 @@ export ZSH=/Users/Jms/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+# ZSH_THEME='bira'
+# ZSH_THEME='jonathan'
+# ZSH_THEME='amuse'
+# ZSH_THEME='fishy'
+# ZSH_THEME='af-magic'
+# ZSH_THEME='ys2'
+# ZSH_THEME='blinks'
+ZSH_THEME='frisk'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +59,9 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump)
+plugins=(git autojump dirhistory osx vi-mode redis-cli extract web-search tmux git-open sublime mvn)
+# reduce the delay
+export KEYTIMEOUT=1
 
 source $ZSH/oh-my-zsh.sh
 DEFAULT_USER='Jms'
@@ -84,12 +94,40 @@ DEFAULT_USER='Jms'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias ...="../.."
+# alias bi="brew install"
+# alias bl="brew list"
+# alias bu="brew update"
+# alias c="clear"
+# alias f="fuck"
+# alias l="ls -a"
+# alias v="vim -u NONE"
+# alias ip="cd ~/IdeaProjects"
+# alias re="redis-cli"
+# alias ll="ls -al"
+# alias vi="vim ~/.ideavimrc"
+# alias vk="vim ~/Git/dotfiles/private.xml"
+# alias vt="vim ~/.tmux.conf"
+# alias vv="vim ~/.vimrc"
+# alias vz="vim ~/.zshrc"
+# alias go="git open"
+# alias sz="source ~/.zshrc"
+# alias cat="ccat"
+# 针对文件类型的alias
+# alias -s gz='tar -xzvf'
+# alias -s tgz='tar -xzvf'
+# alias -s zip='unzip'
+# alias -s bz2='tar -xjvf'
+# alias -s py=vi
+# alias -s html=vi
+# alias -s go=vi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/Jms/.sdkman"
 [[ -s "/Users/Jms/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/Jms/.sdkman/bin/sdkman-init.sh"
 
 export M2_HOME=/usr/local/apache-maven
+export PATH=.:$PATH
 export PATH=$PATH:$M2_HOME/bin
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh  ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
@@ -97,3 +135,69 @@ export PATH=$PATH:$M2_HOME/bin
 export GOPATH=$HOME/GO
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/Cellar/python3/3.6.4_3/bin
+# source ~/.oh-my-zsh/plugins/incr/incr*.zsh
+
+eval $(thefuck --alias)
+
+PATH="/Users/Jms/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/Jms/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/Jms/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/Jms/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/Jms/perl5"; export PERL_MM_OPT;
+
+source /Users/Jms/Git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="$HOME/.cask/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='jk'
+# export FZF_ALT_C_COMMAND='^N'
+
+# zsh-bd
+. $HOME/.zsh/plugins/bd/bd.zsh
+
+# zplug
+source /usr/local/opt/zplug/init.zsh
+zplug "changyuheng/fz", defer:1
+zplug "rupa/z", use:z.sh
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+
+# Python virtualenv 配置
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+autoload -U compinit
+compinit
+
+setopt correctall
+
+autoload -U promptinit
+promptinit
+
+# 每次登录进入tmux
+# tmux_init()
+# {
+    # tmux new-session -s "fuck" -d -n "local" # 开启一个会话
+    # tmux split-window -h                     # 开启一个竖屏
+    # tmux split-window -v "htop"               # 开启一个横屏,并执行htop命令
+    # tmux new-window -n "qcloud"               # 开启一个窗口
+    # tmux split-window -h "ssh qcloud"
+    # tmux -2 attach-session -d                # tmux -2强制启用256color，连接已开启的tmux
+# }
+
+# 判断是否已有开启的tmux会话，没有则开启
+# if which tmux 2>&1 >/dev/null; then
+    # test -z "$TMUX" && (tmux attach || tmux_init)
+# fi
+

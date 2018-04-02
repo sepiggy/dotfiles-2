@@ -22,10 +22,12 @@
 | OPTION + U      | Toggle Case                       |
 | OPTION + V      | Recently Changed Files            |
 | OPTION + X      | Find Action ...                   |
+| OPTION + Y      | Synchronize                       |
 | OPTION + [0-9]  | Go To Bookmark [0-9]              |
 | OPTION + DELETE | Unselect Occurrence               |
 | OPTION + RETURN | Show Intention Actions            |
 | OPTION + -      | Search in Dash                    |
+B
 | OPTION + /      | Comment With Block Comment        |
 | OPTION + [      | Last Edit Location                |
 | OPTION + ]      | Next Edit Location                |

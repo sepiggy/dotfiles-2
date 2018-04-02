@@ -4,7 +4,7 @@ set ignorecase
 set smartcase
 set showmode
 set number
-set scrolloff=5
+set scrolloff=1
 set history=100000
 set clipboard+=unnamed
 " vim-surround
@@ -42,8 +42,8 @@ nnoremap gm :action GotoSuperMethod<cr>
 nnoremap gu :action ShowUsages<cr>
 " Navigate end
 
-nnoremap j jzz
-nnoremap k kzz
+" nnoremap j jzz
+" nnoremap k kzz
 nnoremap H ^
 nnoremap J :action MethodDown<cr>
 nnoremap K :action MethodUp<cr>
@@ -96,22 +96,25 @@ nnoremap <leader>s :source ~/.ideavimrc<cr>
 
 nnoremap <leader>v :action emacsIDEAs.AceJumpSelect<cr>
 
+nnoremap <leader><leader> :action GotoAction<cr>
+
 " ----- 双击 leader 键进入行视图可选模式 -----
-nnoremap <leader><leader>m :action ShowPopupMenu<cr>
+" nnoremap <leader><leader>m :action ShowPopupMenu<cr>
 
 " ----- 将当前光标所在的单词 Toggle case -----
-nnoremap <leader><leader>c :action EditorToggleCase<cr><esc>
+" nnoremap <leader><leader>c :action EditorToggleCase<cr><esc>
 
 " ----- 将当前光标所在的单词用双引号括起来 -----
-nnoremap <leader><leader>q viw<esc>a"<esc>hbi"<esc>lel
+" nnoremap <leader><leader>q viw<esc>a"<esc>hbi"<esc>lel
+
 
 " ----- 将当前光标所在的单词用单引号括起来 -----
-nnoremap <leader><leader>' viw<esc>a'<esc>hbi'<esc>lel
+" nnoremap <leader><leader>' viw<esc>a'<esc>hbi'<esc>lel
 
-nnoremap <leader><leader>\ :vs<cr>
-nnoremap <leader><leader>- :sp<cr>
-nnoremap <leader><leader>h <c-w>h
-nnoremap <leader><leader>j <c-w>j
-nnoremap <leader><leader>k <c-w>k
-nnoremap <leader><leader>l <c-w>l
-nnoremap <leader><leader>w <c-w>c
+" nnoremap <leader><leader>\ :vs<cr>
+" nnoremap <leader><leader>- :sp<cr>
+" nnoremap <leader><leader>h <c-w>h
+" nnoremap <leader><leader>j <c-w>j
+" nnoremap <leader><leader>k <c-w>k
+" nnoremap <leader><leader>l <c-w>l
+" nnoremap <leader><leader>w <c-w>c

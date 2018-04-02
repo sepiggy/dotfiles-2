@@ -1,0 +1,8 @@
+[user]
+	email = jms1209@qq.com
+	name = sepiggy
+[oh-my-zsh]
+	hide-status = 1
+[core]
+	autocrlf = input
+	safecrlf = warn
